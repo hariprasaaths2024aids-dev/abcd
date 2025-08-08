@@ -1,9 +1,12 @@
 fastapi
 uvicorn
 python-dotenv
+requests
+PyMuPDF
+tiktoken
+faiss-cpu
+pydantic
 langchain
 langchain-community
-PyMuPDF
-faiss-cpu
-requests
-pydantic
+langchain-openai
+sentence-transformers

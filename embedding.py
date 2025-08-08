@@ -1,11 +1,11 @@
 import tempfile
 import requests
 import fitz  # PyMuPDF
-from langchain_community.embeddings import HuggingFaceBgeEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.docstore.document import Document
-from langchain.llms import HuggingFaceEndpoint
+from langchain_community.llms import HuggingFaceEndpoint
 
 def process_documents(doc_url: str, questions: list) -> list:
     response = requests.get(doc_url)
@@ -24,7 +24,8 @@ def process_documents(doc_url: str, questions: list) -> list:
     chunks = splitter.split_text(text)
     documents = [Document(page_content=chunk) for chunk in chunks]
 
-    embeddings = HuggingFaceBgeEmbeddings(model_name="BAAI/bge-base-en")
+    embeddings = HuggingFaceEmbeddings(model_name="BAAI/bge-base-en")
+
     vectorstore = FAISS.from_documents(documents, embeddings)
     
     retriever = vectorstore.as_retriever()

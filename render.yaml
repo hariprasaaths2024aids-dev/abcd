@@ -6,6 +6,6 @@ services:
     startCommand: uvicorn main:app --host 0.0.0.0 --port=$PORT
     envVars:
       - key: team_token
-        sync: false
+        value: 278493a495a076d04856f2c05f7ba16a0e1a2acac7106db1adbf9b84a1642687
       - key: GROQ_API_KEY
-        sync: false
+        value: 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

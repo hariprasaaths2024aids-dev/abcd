@@ -39,14 +39,10 @@ def process_documents(doc_url: str, questions: list) -> list:
     for question in questions:
         docs = retriever.get_relevant_documents(question)
         context = " ".join([doc.page_content for doc in docs[:3]])
-        prompt = f"Answer the question based on the context:
-
-Context:
-{context}
-
-Question:
-{question}"
+        prompt = f"""Answer the question based on the context:
+Context: {context}
+Question: {question}
+Answer:"""
         answer = llm.invoke(prompt)
         results.append(answer.strip())
-
-    return results
+return results

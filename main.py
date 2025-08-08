@@ -1,11 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routes import router as query_router
+from routes import router
 
-app = FastAPI(
-    title="LLM Document Query System",
-    version="0.1.0"
-)
+app = FastAPI(title="LLM Document Query System", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -15,4 +12,4 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(query_router, prefix="/api/v1/hackrx")
+app.include_router(router, prefix="/api/v1/hackrx")

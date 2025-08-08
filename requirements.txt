@@ -3,9 +3,7 @@ uvicorn
 python-dotenv
 langchain
 langchain-community
-langchain-groq
 PyMuPDF
-tiktoken
 faiss-cpu
 requests
 pydantic
